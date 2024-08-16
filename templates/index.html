@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>WebSocket Example</title>
+    <script type="text/javascript">
+        let ws;
+
+        function connectWebSocket() {
+            ws = new WebSocket('{{WEBSOCKET_ENDPOINT}}');
+
+            ws.onopen = function(event) {
+                console.log("WebSocket is open now.");
+            };
+
+            ws.onmessage = function(event) {
+                console.log("WebSocket message received:", event.data);
+                document.getElementById("number").innerHTML = "<p>" + event.data + "</p>";
+            };
+
+            ws.onclose = function(event) {
+                console.log("WebSocket is closed now.");
+            };
+        }
+
+
+    </script>
+</head>
+<body onload="connectWebSocket()">
+    <h1>WebSocket Example</h1>
+    Hello, {{user['login']}}!<br>
+    Your GitHub profile: {{user['html_url']}}<br>
+    Your public email: {{user.get('email', 'No public email')}}
+    <br>
+    <div id="number"></div>
+    <a href="/auth/logout">Logout</a>
+</body>
+</html>
