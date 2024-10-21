@@ -1,14 +1,10 @@
 ## Installation
 
-`python3 -m venv venv`
-`source venv/bin/activate`
-`pip3 install -r requirements.txt`
-`cp .env.prod .env`
-`python3 gen_secret.py`
+`docker build . -t webapp`
 
 ## Running
 
-`python3 tornado_app.py`
+`docker run -p 8888:8888 -it webapp`
 
 Open http://localhost:8888
 
