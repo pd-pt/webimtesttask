@@ -1,16 +1,14 @@
-import tornado.web
-
-import os
-from dotenv import load_dotenv
 import json
+import os
 import uuid
+
+import requests
+import tornado.gen
+import tornado.httpclient
 import tornado.ioloop
 import tornado.web
-import tornado.httpclient
-import tornado.gen
-import requests
-import json
-import uuid
+import tornado.web
+from dotenv import load_dotenv
 
 sessions = {}
 
@@ -38,6 +36,7 @@ class GitHubLoginHandler(tornado.web.RequestHandler):
             f"https://github.com/login/oauth/authorize"
             f"?client_id={GITHUB_CLIENT_ID}&redirect_uri={GITHUB_REDIRECT_URI}&scope=user:email"
         )
+
 
 class GitHubCallbackHandler(BaseHandler):
     @tornado.gen.coroutine
@@ -71,6 +70,7 @@ class GitHubCallbackHandler(BaseHandler):
 
         # Redirect to the home page
         self.redirect("/")
+
 
 class LogoutHandler(BaseHandler):
     def get(self):

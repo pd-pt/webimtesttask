@@ -21,8 +21,6 @@
                 console.log("WebSocket is closed now.");
             };
         }
-
-
     </script>
 </head>
 <body onload="connectWebSocket()">
@@ -31,7 +29,11 @@
     Your GitHub profile: {{user['html_url']}}<br>
     Your public email: {{user.get('email', 'No public email')}}
     <br>
-    <div id="number"></div>
+    <div id="number">
+        <p>
+            {{initial_number}}
+        </p>
+    </div>
     <a href="/auth/logout">Logout</a>
 </body>
 </html>

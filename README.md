@@ -8,6 +8,6 @@
 
 Open http://localhost:8888
 
-## Note
+## Prod link
 
-Due to absense of free domain name and VPS server provided, there is no docker and nginx configs so it's only local version which can be run as described above.
+https://webimtesttask-uis6ao62.b4a.run/
